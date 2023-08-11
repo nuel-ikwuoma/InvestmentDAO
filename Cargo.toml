@@ -3,3 +3,10 @@ members = [
     "contracts/dao",
     "contracts/governance-token",
 ]
+
+
+[profile.dev]
+overflow-checks = false
+
+[profile.release]
+overflow-checks = false
