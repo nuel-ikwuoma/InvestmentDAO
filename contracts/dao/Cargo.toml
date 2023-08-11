@@ -16,7 +16,7 @@ openbrush = { tag = "4.0.0-beta", git = "https://github.com/Brushfam/openbrush-c
 governance_token = { path = "../governance-token", default-features = false, features = ["ink-as-dependency"]}
 
 [lib]
-crate-type = ["cdylib"]
+# crate-type = ["cdylib"]
 path = "lib.rs"
 
 [features]
