@@ -18,7 +18,7 @@ openbrush = { tag = "4.0.0-beta", git = "https://github.com/Brushfam/openbrush-c
 
 [lib]
 # name = "token"
-crate-type = ["cdylib", "rlib"]
+# crate-type = ["cdylib", "rlib"]
 path = "lib.rs"
 
 
