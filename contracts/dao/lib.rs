@@ -3,6 +3,7 @@
 #[ink::contract]
 pub mod dao {
     use ink::storage::Mapping;
+    use ink::env::call;
     use openbrush::contracts::traits::psp22::*;
     use scale::{
         Decode,
@@ -153,12 +154,12 @@ pub mod dao {
             }
             self.votes.insert((proposal_id, &caller), &Some(()));
 
-            let caller_balance = ink::env::call::build_call::<ink::env::DefaultEnvironment>()
+            let caller_balance = call::build_call::<ink::env::DefaultEnvironment>()
                 .call(self.governance_token)
                 .gas_limit(0)
                 .transferred_value(10)
                 .exec_input(
-                    ink::env::call::ExecutionInput::new(ink::env::call::Selector::new(ink::selector_bytes!("balanceOf")))
+                    call::ExecutionInput::new(call::Selector::new(ink::selector_bytes!("balanceOf")))
                         // .push_arg(42u8)
                         // .push_arg(true)
                         // .push_arg(&[0x10u8; 32])
@@ -166,12 +167,12 @@ pub mod dao {
                 .returns::<Balance>()
                 .invoke();
 
-            let total_token_supply = ink::env::call::build_call::<ink::env::DefaultEnvironment>()
+            let total_token_supply = call::build_call::<ink::env::DefaultEnvironment>()
             .call(self.governance_token)
             .gas_limit(0)
             .transferred_value(10)
             .exec_input(
-                ink::env::call::ExecutionInput::new(ink::env::call::Selector::new(ink::selector_bytes!("totalSupply")))
+                call::ExecutionInput::new(call::Selector::new(ink::selector_bytes!("totalSupply")))
                     // .push_arg(42u8)
                     // .push_arg(true)
                     // .push_arg(&[0x10u8; 32])
